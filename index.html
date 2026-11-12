@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Новогодний сертификат — клиника «Борменталь»</title>
+<meta name="description" content="Новогодний подарочный сертификат клиники «Борменталь», Оренбург: инъекционная косметология.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2a2326">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f5f4;
+    --surface:#ffffff;
+    --soft:#f4e9ea;
+    --ink:#262224;
+    --muted:#6f6668;
+    --line:#ebe1e2;
+    --accent:#c1828b;      /* фирменный цвет с сайта борменталь56.рф */
+    --accent-dark:#9e5f69;
+    --accent-ink:#ffffff;
+    --dark:#2a2326;
+    --radius:20px;
+    --shadow:0 1px 2px rgba(38,34,36,.04), 0 12px 32px -12px rgba(38,34,36,.14);
+    --serif:"Playfair Display", Georgia, serif;
+    --sans:"Nunito Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;margin:0;letter-spacing:-.005em}
+  h2{font-size:clamp(30px,4.6vw,42px);margin-bottom:14px}
+  .lead{color:var(--muted);max-width:560px;margin:0 0 36px;font-size:17px}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dark);font-weight:700;margin-bottom:16px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;
+    background:var(--accent);color:var(--accent-ink);font:700 15px/1 var(--sans);letter-spacing:.03em;
+    padding:19px 32px;border-radius:999px;text-decoration:none;transition:background .2s, transform .15s, box-shadow .2s;
+    box-shadow:0 8px 20px -8px rgba(193,130,139,.7)}
+  .btn:hover{background:var(--accent-dark)}
+  .btn:active{transform:scale(.98)}
+  .btn:focus-visible{outline:3px solid rgba(193,130,139,.45);outline-offset:3px}
+  .btn-block{width:100%}
+  .btn svg{flex:none}
+
+  /* ---------- 1. обложка ---------- */
+  .hero{position:relative;min-height:min(100svh,860px);display:flex;flex-direction:column;color:#fff;overflow:hidden;padding:0;background:var(--dark)}
+  .hero-bg{position:absolute;inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);object-fit:cover;filter:blur(2px) saturate(.9)}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 80% at 15% 100%, rgba(30,24,27,.92) 0%, rgba(30,24,27,.55) 55%, rgba(30,24,27,.35) 100%),
+      linear-gradient(180deg, rgba(30,24,27,.55) 0%, rgba(30,24,27,.2) 40%, rgba(30,24,27,.75) 100%)}
+  .top{position:relative;z-index:3;padding:22px 0}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+  .brand img{width:58px;height:58px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.14)}
+  .brand b{display:block;font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.1}
+  .brand small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.72;margin-top:3px}
+  .top .tel{font-weight:600;font-size:15px;text-decoration:none;opacity:.9;white-space:nowrap}
+  .hero-body{position:relative;z-index:2;margin-top:auto;width:100%;padding:80px 0 84px}
+  .hero .eyebrow{color:#efc3c9}
+  .hero h1{font-size:clamp(42px,7.4vw,84px);max-width:780px;margin-bottom:22px}
+  .hero h1 em{font-style:italic;color:#f0c7cc}
+  .hero p{font-size:clamp(17px,2vw,20px);max-width:540px;margin:0 0 36px;opacity:.9}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:40px;font-size:14px;opacity:.78}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .snow{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background-image:radial-gradient(1.5px 1.5px at 20% 30%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 70% 20%,rgba(255,255,255,.45),transparent),radial-gradient(1.5px 1.5px at 85% 60%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 40% 70%,rgba(255,255,255,.4),transparent),radial-gradient(1px 1px at 55% 45%,rgba(255,255,255,.35),transparent),radial-gradient(1.5px 1.5px at 10% 80%,rgba(255,255,255,.3),transparent);
+    background-size:420px 420px}
+
+  /* ---------- 2. сертификат ---------- */
+  .cert{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:stretch}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:40px;box-shadow:var(--shadow)}
+  .gift{position:relative;overflow:hidden;color:#fff;border:0;min-height:360px;display:flex;flex-direction:column;justify-content:space-between;
+    background:linear-gradient(150deg,#3a2f33 0%,#2a2326 60%,#211b1e 100%)}
+  .gift::before{content:"";position:absolute;inset:14px;border:1px solid rgba(239,195,201,.35);border-radius:12px;pointer-events:none}
+  .gift .ring{position:absolute;right:-90px;bottom:-90px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(193,130,139,.45)}
+  .gift .ring.r2{right:-40px;bottom:-40px;width:200px;height:200px;border-color:rgba(193,130,139,.3)}
+  .gift-head{display:flex;align-items:center;justify-content:space-between;position:relative}
+  .gift-head img{width:66px;height:66px;border-radius:50%;background:#fff}
+  .gift-head span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#efc3c9;font-weight:700}
+  .gift h3{font-size:clamp(28px,3.6vw,38px);margin:26px 0 10px;position:relative}
+  .gift .sub{position:relative;font-size:14px;opacity:.72}
+  .gift .sum{position:relative;font-family:var(--serif);font-size:24px;color:#efc3c9;margin-top:18px}
+
+  .incl{list-style:none;padding:0;margin:0 0 26px}
+  .incl li{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line)}
+  .incl li:first-child{padding-top:0}
+  .incl .n{display:flex;gap:14px;align-items:flex-start}
+  .incl i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--soft);color:var(--accent-dark);display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .incl b{display:block;font-weight:700}
+  .incl small{display:block;color:var(--muted);font-size:14px}
+  .incl em{font-style:normal;color:var(--muted);white-space:nowrap;font-size:15px}
+  .price-label{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+  .price{font-family:var(--serif);font-size:clamp(52px,7.5vw,72px);font-weight:500;line-height:1;margin:6px 0 10px;color:var(--ink)}
+  .note{color:var(--muted);font-size:14px;margin:0 0 26px}
+
+  /* ---------- 3. любая сумма ---------- */
+  .amount{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .field{display:block;margin-bottom:16px}
+  .field label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
+  .field label span{font-weight:400;color:var(--muted)}
+  .input{width:100%;font:500 17px var(--sans);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px 18px;outline:none;transition:border-color .2s, box-shadow .2s, background .2s;-webkit-appearance:none;appearance:none}
+  .input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(193,130,139,.16)}
+  .input.invalid{border-color:#b84a57}
+  .money{position:relative}
+  .money .input{font:500 30px var(--serif);padding-right:56px}
+  .money::after{content:"₽";position:absolute;right:20px;top:50%;transform:translateY(-50%);font:500 26px var(--serif);color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+  .chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 16px;font:600 14px var(--sans);color:var(--ink);cursor:pointer;transition:border-color .2s, background .2s}
+  .chip:hover,.chip.on{border-color:var(--accent);background:var(--soft)}
+  .err{color:#b84a57;font-size:13px;margin:-4px 0 12px;min-height:18px}
+  input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+  input[type=number]{-moz-appearance:textfield}
+
+  /* ---------- 4. о клинике ---------- */
+  .about{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .photo{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--soft)}
+  .photo img{width:100%;aspect-ratio:354/264;object-fit:cover}
+  .photo figcaption{font-size:13px;color:var(--muted);padding:12px 16px;background:#fff}
+  .facts{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+  .facts li{display:flex;gap:16px;align-items:flex-start}
+  .facts strong{flex:none;min-width:64px;font:500 30px/1 var(--serif);color:var(--accent-dark)}
+  .facts p{margin:2px 0 0;color:var(--muted)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .tags span{background:var(--soft);border-radius:999px;padding:7px 14px;font-size:14px}
+
+  /* ---------- 5. форма ---------- */
+  .order{background:linear-gradient(180deg,var(--bg) 0%,var(--soft) 100%)}
+  .order .card{max-width:640px;margin:0 auto;padding:44px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  select.input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23262224' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;padding-right:44px}
+  .hint{text-align:center;color:var(--muted);font-size:14px;margin:14px 0 0}
+  .ok{display:none;text-align:center;padding:24px 0}
+  .ok .tick{width:64px;height:64px;border-radius:50%;background:var(--soft);color:var(--accent-dark);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+  .ok h3{font-size:34px;margin-bottom:10px}
+  .hidden{display:none}
+
+  /* ---------- 6. футер ---------- */
+  footer{background:var(--dark);color:rgba(255,255,255,.72);padding:44px 0 90px;font-size:14px}
+  footer .wrap{display:grid;gap:18px}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-top b{font-family:var(--serif);font-weight:500;font-size:19px;color:#fff}
+  .foot-top a{text-decoration:none}
+  .legal{font-size:12.5px;line-height:1.6;margin:0}
+  .legal strong{color:#efc3c9;font-weight:600}
+  .draft{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:rgba(38,34,36,.9);color:#fff;backdrop-filter:blur(6px);
+    font-size:12px;padding:8px 16px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+
+  @media (max-width:860px){
+    section{padding:64px 0}
+    .cert,.amount,.about-grid{grid-template-columns:1fr}
+    .amount{gap:22px}
+    .about-grid{gap:32px}
+    .gift{min-height:300px}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 16px}
+    .card,.order .card{padding:26px 20px}
+    .gift{padding:30px 24px}
+    .row{grid-template-columns:1fr;gap:0}
+    .top .tel{display:none}
+    .brand img{width:50px;height:50px}
+    .hero-body{padding:56px 0 52px}
+    .hero-meta{margin-top:30px;gap:8px 18px}
+    .btn{width:100%}
+    .incl li{flex-direction:column;gap:4px}
+    .incl em{padding-left:40px}
+    .draft{font-size:11px;padding:7px 12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. Обложка -->
+<section class="hero">
+  <img class="hero-bg" src="images/cabinet.jpg" alt="" aria-hidden="true">
+  <div class="snow"></div>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="https://xn--56-6kcdu1bejguz6j.xn--p1ai/" target="_blank" rel="noopener">
+        <img src="images/logo.png" alt="Логотип клиники «Борменталь 56»">
+        <span><b>Борменталь</b><small>Клиника · Оренбург</small></span>
+      </a>
+      <a class="tel" href="tel:+73532252575">+7 (3532) 25-25-75</a>
+    </div>
+  </header>
+  <div class="hero-body">
+    <div class="wrap">
+      <div class="eyebrow">Новогодний сертификат</div>
+      <h1>Подарите свежий взгляд <em>к&nbsp;Новому году</em></h1>
+      <p>Новогодний сертификат от клиники «Борменталь». Оформляется и&nbsp;оплачивается сразу</p>
+      <a class="btn" href="#certificate">Выбрать сертификат
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+      <div class="hero-meta">
+        <span>ул. Чкалова, 20</span>
+        <span>Пн–Вс, 10:00–20:00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Сертификат -->
+<section id="certificate">
+  <div class="wrap">
+    <div class="eyebrow">Сертификат</div>
+    <h2>Ботокс + губы</h2>
+    <p class="lead">Инъекционная косметология по прайсу клиники.</p>
+    <div class="cert">
+      <div class="card gift" aria-hidden="true">
+        <div class="ring"></div><div class="ring r2"></div>
+        <div class="gift-head">
+          <img src="images/logo.png" alt="">
+          <span>Подарочный сертификат</span>
+        </div>
+        <div>
+          <h3>Ботокс (межбровье, глаза, нижняя треть) + губы</h3>
+          <div class="sub">Клиника «Борменталь» · Оренбург</div>
+          <div class="sum">18 000 ₽</div>
+        </div>
+      </div>
+      <div class="card">
+        <ul class="incl">
+          <li>
+            <span class="n"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></i>
+              <span><b>Ботокс</b><small>Межбровье, глаза, нижняя треть</small></span></span>
+            <em>9 000 ₽</em>
+          </li>
+          <li>
+            <span class="n"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></i>
+              <span><b>Губы</b><small>Neuromuscular, 1 мл</small></span></span>
+            <em>9 000 ₽</em>
+          </li>
+        </ul>
+        <div class="price-label">Стоимость сертификата</div>
+        <div class="price">18 000 ₽</div>
+        <p class="note">Электронный сертификат</p>
+        <a class="btn btn-block" href="#order" data-pick="main">Оформить сертификат</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Любая сумма -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="card amount">
+      <div>
+        <div class="eyebrow">Свободный номинал</div>
+        <h2>Сертификат на&nbsp;любую сумму</h2>
+        <p class="lead" style="margin-bottom:0">Впишите сумму от&nbsp;3&nbsp;000&nbsp;₽.</p>
+      </div>
+      <div>
+        <div class="field">
+          <label for="amountInput">Сумма сертификата</label>
+          <div class="money"><input class="input" id="amountInput" type="number" inputmode="numeric" min="3000" step="500" placeholder="5 000"></div>
+        </div>
+        <div class="chips">
+          <button class="chip" type="button" data-amount="3000">3 000 ₽</button>
+          <button class="chip" type="button" data-amount="5000">5 000 ₽</button>
+          <button class="chip" type="button" data-amount="10000">10 000 ₽</button>
+        </div>
+        <div class="err" id="amountErr" aria-live="polite"></div>
+        <button class="btn btn-block" type="button" id="amountBtn">Оформить сертификат</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. О клинике -->
+<section class="about">
+  <div class="wrap about-grid">
+    <figure class="photo">
+      <img src="images/team.jpg" alt="Команда клиники «Борменталь»" loading="lazy">
+      <figcaption>Команда клиники «Борменталь»</figcaption>
+    </figure>
+    <div>
+      <div class="eyebrow">О клинике</div>
+      <h2>Под чуткой заботой</h2>
+      <p class="lead" style="margin-bottom:0">Эстетическая косметология, массаж, нутрициология и психология в одном месте.</p>
+      <ul class="facts">
+        <li><strong>16</strong><p>лет профессионального стажа у директора центра Ольги Владимировны Ивановой</p></li>
+        <li><strong>14</strong><p>лет практики врачом дерматовенерологом-косметологом</p></li>
+      </ul>
+      <div class="tags">
+        <span>Ботокс</span><span>Губы</span><span>Биоревитализация</span><span>Нитевой лифтинг</span><span>RF-лифтинг</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Форма -->
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="card">
+      <div id="formWrap">
+        <div class="eyebrow">Заявка</div>
+        <h2 style="font-size:clamp(28px,4.4vw,38px)">Оформить сертификат</h2>
+        <form id="certForm" novalidate style="margin-top:26px">
+          <div class="row">
+            <div class="field">
+              <label for="fName">Имя</label>
+              <input class="input" id="fName" name="name" required autocomplete="name" placeholder="Ваше имя">
+            </div>
+            <div class="field">
+              <label for="fPhone">Телефон</label>
+              <input class="input" id="fPhone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="+7 ___ ___-__-__">
+            </div>
+          </div>
+          <div class="field">
+            <label for="fType">Сертификат</label>
+            <select class="input" id="fType" name="certificate_type">
+              <option value="main">Ботокс (межбровье, глаза, нижняя треть) + губы — 18 000 ₽</option>
+              <option value="any">На любую сумму</option>
+            </select>
+          </div>
+          <div class="field hidden" id="fAmountWrap">
+            <label for="fAmount">Сумма, ₽ <span>(от 3 000)</span></label>
+            <input class="input" id="fAmount" name="amount" type="number" inputmode="numeric" min="3000" step="500" placeholder="5 000">
+          </div>
+          <div class="field">
+            <label for="fFor">Кому подарок <span>(необязательно)</span></label>
+            <input class="input" id="fFor" name="recipient" placeholder="Например, маме">
+          </div>
+          <div class="err" id="formErr" aria-live="polite"></div>
+          <button class="btn btn-block" type="submit">Оформить сертификат</button>
+          <p class="hint">Администратор свяжется с вами и пришлёт электронный сертификат</p>
+        </form>
+      </div>
+      <div class="ok" id="ok" role="status">
+        <div class="tick"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Спасибо!</h3>
+        <p class="lead" style="margin:0 auto" id="okText">Администратор свяжется с вами и пришлёт электронный сертификат.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Футер -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <b>Клиника «Борменталь»</b>
+      <span>г. Оренбург, ул. Чкалова, 20 · Пн–Вс 10:00–20:00 · <a href="tel:+73532252575">+7 (3532) 25-25-75</a></span>
+    </div>
+    <p class="legal"><strong>Имеются противопоказания. Необходима консультация специалиста.</strong></p>
+    <p class="legal">Черновик. Цены и условия уточняются. Оплата не требуется — сначала черновик, оплата только если понравится.</p>
+  </div>
+</footer>
+
+<div class="draft">Черновик · цены и условия уточняются</div>
+
+<script>
+  const MIN = 3000;
+  const type = document.getElementById('fType');
+  const amtWrap = document.getElementById('fAmountWrap');
+  const amt = document.getElementById('fAmount');
+  const fmt = n => Number(n).toLocaleString('ru-RU');
+
+  function syncType(){
+    const any = type.value === 'any';
+    amtWrap.classList.toggle('hidden', !any);
+    amt.required = any;
+  }
+  type.addEventListener('change', syncType);
+
+  function goOrder(){
+    document.getElementById('order').scrollIntoView({behavior:'smooth'});
+    setTimeout(() => document.getElementById('fName').focus({preventScroll:true}), 650);
+  }
+
+  document.querySelector('[data-pick="main"]').addEventListener('click', e => {
+    e.preventDefault(); type.value = 'main'; syncType(); goOrder();
+  });
+
+  const aIn = document.getElementById('amountInput');
+  const aErr = document.getElementById('amountErr');
+  const chips = document.querySelectorAll('.chip');
+  chips.forEach(c => c.addEventListener('click', () => {
+    aIn.value = c.dataset.amount; aErr.textContent = ''; aIn.classList.remove('invalid');
+    chips.forEach(x => x.classList.toggle('on', x === c));
+  }));
+  aIn.addEventListener('input', () => chips.forEach(x => x.classList.toggle('on', x.dataset.amount === aIn.value)));
+  document.getElementById('amountBtn').addEventListener('click', () => {
+    const v = parseInt(aIn.value, 10);
+    if (!v || v < MIN) { aErr.textContent = 'Укажите сумму от 3 000 ₽'; aIn.classList.add('invalid'); aIn.focus(); return; }
+    aErr.textContent = ''; aIn.classList.remove('invalid');
+    type.value = 'any'; syncType(); amt.value = v; goOrder();
+  });
+
+  const form = document.getElementById('certForm');
+  const fErr = document.getElementById('formErr');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const phoneDigits = form.phone.value.replace(/\D/g, '');
+    form.querySelectorAll('.input').forEach(i => i.classList.remove('invalid'));
+    if (!name) { fErr.textContent = 'Укажите имя'; form.name.classList.add('invalid'); form.name.focus(); return; }
+    if (phoneDigits.length < 10) { fErr.textContent = 'Укажите телефон'; form.phone.classList.add('invalid'); form.phone.focus(); return; }
+    if (type.value === 'any' && (!amt.value || +amt.value < MIN)) { fErr.textContent = 'Укажите сумму от 3 000 ₽'; amt.classList.add('invalid'); amt.focus(); return; }
+    fErr.textContent = '';
+    const what = type.value === 'any'
+      ? 'сертификат на ' + fmt(amt.value) + ' ₽'
+      : 'сертификат «Ботокс + губы» на 18 000 ₽';
+    // Черновик: заявка никуда не отправляется — подключим получателя после согласования.
+    document.getElementById('okText').textContent = name + ', заявка на ' + what + ' принята. Администратор свяжется с вами и пришлёт электронный сертификат.';
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('ok').style.display = 'block';
+  });
+</script>
+</body>
+</html>
