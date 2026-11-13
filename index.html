@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Новогодний сертификат — клиника «Борменталь»</title>
-<meta name="description" content="Новогодний подарочный сертификат клиники «Борменталь», Оренбург: массаж лица и абонемент на тело со СПА-программой в подарок.">
+<title>Подарочный сертификат — клиника «Борменталь»</title>
+<meta name="description" content="Подарочный сертификат клиники «Борменталь», Оренбург: массаж лица, абонемент на тело, косметология — к любому поводу.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Подарочный сертификат — клиника «Борменталь»">
+<meta property="og:description" content="Подарочный сертификат — клиника «Борменталь»">
+<meta property="og:image" content="https://dmitriy4z1rka-dev.github.io/bormental-certificate-draft/images/hero.jpg">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#4a1c1c">
 <link rel="icon" href="images/logo.png">
@@ -55,7 +59,7 @@
 
   /* ---------- 1. обложка ---------- */
   .hero{position:relative;min-height:min(100svh,860px);display:flex;flex-direction:column;color:var(--ink);overflow:hidden;padding:0;background:var(--bg-deep)}
-  .hero-bg{position:absolute;inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);object-fit:cover;object-position:88% center;filter:blur(2px) grayscale(.4)}
+  .hero-bg{position:absolute;inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);object-fit:cover;object-position:right center;filter:blur(1.5px) saturate(.75)}
   .hero::after{content:"";position:absolute;inset:0;
     background:
       radial-gradient(120% 80% at 15% 100%, rgba(52,16,16,.95) 0%, rgba(62,20,20,.78) 55%, rgba(74,28,28,.62) 100%),
@@ -74,9 +78,6 @@
   .hero p{font-size:clamp(17px,2vw,20px);max-width:540px;margin:0 0 36px;color:var(--muted)}
   .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:40px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
   .hero-meta span{display:inline-flex;align-items:center;gap:8px}
-  .snow{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background-image:radial-gradient(1.5px 1.5px at 20% 30%,rgba(242,232,220,.45),transparent),radial-gradient(1px 1px at 70% 20%,rgba(242,232,220,.4),transparent),radial-gradient(1.5px 1.5px at 85% 60%,rgba(242,232,220,.3),transparent),radial-gradient(1px 1px at 40% 70%,rgba(242,232,220,.35),transparent),radial-gradient(1px 1px at 55% 45%,rgba(242,232,220,.3),transparent),radial-gradient(1.5px 1.5px at 10% 80%,rgba(242,232,220,.25),transparent);
-    background-size:420px 420px}
 
   /* ---------- 2. сертификаты ---------- */
   .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:40px;box-shadow:var(--shadow)}
@@ -158,7 +159,11 @@
     border:1px solid rgba(242,232,220,.14);box-shadow:0 0 0 22px rgba(0,0,0,0),0 0 0 23px rgba(242,232,220,.07)}
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
   .photo{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--surface);border:1px solid var(--line)}
-  .photo img{width:100%;aspect-ratio:354/264;object-fit:cover}
+  .photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 40%}
+  .portrait{max-width:420px;justify-self:end;width:100%}
+  .portrait img{aspect-ratio:4/5;object-position:center 30%}
+  .lead-doc{position:relative;background:var(--bg)}
+  .lead-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
   .photo figcaption{font-size:13px;color:var(--muted);padding:12px 16px;background:var(--surface)}
   .facts{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
   .facts li{display:flex;gap:16px;align-items:flex-start}
@@ -187,12 +192,13 @@
   .foot-top a{text-decoration:none}
   .legal{font-size:12.5px;line-height:1.6;margin:0}
   .legal strong{color:var(--ink);font-weight:600}
-  .draft{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;background:rgba(242,232,220,.94);color:var(--on-cream);backdrop-filter:blur(6px);
-    font-size:12px;font-weight:600;padding:8px 16px;border-radius:4px;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.3)}
 
   @media (max-width:860px){
     section{padding:64px 0}
-    .offers,.amount,.about-grid,.noms{grid-template-columns:1fr}
+    .offers,.amount,.about-grid,.noms,.lead-grid{grid-template-columns:1fr}
+    .lead-grid{gap:32px}
+    .portrait{justify-self:start;max-width:100%}
+    .lead-grid .portrait{order:-1}
     .amount{gap:22px}
     .about-grid{gap:32px}
     .about::after{display:none}
@@ -212,7 +218,6 @@
     .hero-body{padding:56px 0 52px}
     .hero-meta{margin-top:30px;gap:8px 18px}
     .btn{width:100%}
-    .draft{font-size:11px;padding:7px 12px}
   }
 </style>
 </head>
@@ -220,8 +225,7 @@
 
 <!-- 1. Обложка -->
 <section class="hero">
-  <img class="hero-bg" src="images/cabinet.jpg" alt="" aria-hidden="true">
-  <div class="snow"></div>
+  <img class="hero-bg" src="images/hero.jpg" alt="" aria-hidden="true">
   <div class="hero-frame"></div>
   <header class="top">
     <div class="wrap">
@@ -234,9 +238,9 @@
   </header>
   <div class="hero-body">
     <div class="wrap">
-      <div class="eyebrow">Новогодний сертификат</div>
-      <h1>Новый год начинается <em>с&nbsp;отдыха</em></h1>
-      <p>Новогодний сертификат от клиники «Борменталь». Оформляется и&nbsp;оплачивается сразу</p>
+      <div class="eyebrow">Подарочный сертификат</div>
+      <h1>Забота, которую <em>можно подарить</em></h1>
+      <p>Ко дню рождения, 8&nbsp;Марта, годовщине — или просто чтобы порадовать близкого человека. Сертификат от клиники «Борменталь» оформляется и&nbsp;оплачивается сразу</p>
       <a class="btn" href="#certificate">Выбрать сертификат
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </a>
@@ -371,14 +375,29 @@
       <div class="eyebrow">О клинике</div>
       <h2>Под чуткой заботой</h2>
       <p class="lead" style="margin-bottom:0">Эстетическая косметология, массаж, нутрициология и психология в одном месте.</p>
-      <ul class="facts">
-        <li><strong>16</strong><p>лет профессионального стажа у директора центра Ольги Владимировны Ивановой</p></li>
-        <li><strong>14</strong><p>лет практики врачом дерматовенерологом-косметологом</p></li>
-      </ul>
       <div class="tags">
         <span>Массаж лица</span><span>Массаж тела</span><span>СПА комплекс</span><span>Обертывание</span><span>Сферомассаж</span><span>Прессотерапия</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 4б. Руководитель -->
+<section class="lead-doc">
+  <div class="wrap lead-grid">
+    <div>
+      <div class="eyebrow">Руководитель клиники</div>
+      <h2>Ольга Владимировна Иванова</h2>
+      <p class="lead" style="margin-bottom:0">Директор центра «Борменталь56». Выстраивает работу центра на&nbsp;принципах научного подхода, безопасности и&nbsp;заботы о&nbsp;каждом клиенте.</p>
+      <ul class="facts">
+        <li><strong>16</strong><p>лет профессионального стажа</p></li>
+        <li><strong>14</strong><p>лет практики врачом дерматовенерологом-косметологом</p></li>
+        <li><strong>3</strong><p>года практики нутрициологом</p></li>
+      </ul>
+    </div>
+    <figure class="photo portrait">
+      <img src="images/portrait.jpg" alt="Ольга Владимировна Иванова, руководитель клиники «Борменталь»" loading="lazy">
+    </figure>
   </div>
 </section>
 
@@ -445,7 +464,6 @@
   </div>
 </footer>
 
-<div class="draft">Черновик · цены и условия уточняются</div>
 
 <script>
   const MIN = 3000;
