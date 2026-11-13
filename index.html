@@ -56,6 +56,9 @@
   .btn:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
   .btn-block{width:100%}
   .btn svg{flex:none}
+  .btn-call{background:transparent;color:var(--ink);border-color:var(--line-strong);box-shadow:inset 0 0 0 1px rgba(242,232,220,.25)}
+  .btn-call:hover{background:rgba(242,232,220,.1);border-color:var(--cream);color:var(--ink)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
 
   /* ---------- 1. обложка ---------- */
   .hero{position:relative;min-height:min(100svh,860px);display:flex;flex-direction:column;color:var(--ink);overflow:hidden;padding:0;background:var(--bg-deep)}
@@ -187,9 +190,11 @@
   /* ---------- 6. футер ---------- */
   footer{background:var(--bg-deep);color:var(--faint);padding:44px 0 90px;font-size:14px;border-top:1px solid var(--line)}
   footer .wrap{display:grid;gap:18px}
-  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-bottom:22px;border-bottom:1px solid var(--line)}
   .foot-top b{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--ink);text-transform:uppercase;letter-spacing:.06em}
   .foot-top a{text-decoration:none}
+  .foot-top .btn-call{padding:15px 26px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .legal{font-size:12.5px;line-height:1.6;margin:0}
   .legal strong{color:var(--ink);font-weight:600}
 
@@ -241,9 +246,12 @@
       <div class="eyebrow">Подарочный сертификат</div>
       <h1>Забота, которую <em>можно подарить</em></h1>
       <p>Ко дню рождения, 8&nbsp;Марта, годовщине — или просто чтобы порадовать близкого человека. Сертификат от клиники «Борменталь» оформляется и&nbsp;оплачивается сразу</p>
-      <a class="btn" href="#certificate">Выбрать сертификат
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </a>
+      <div class="hero-actions">
+        <a class="btn" href="#certificate">Выбрать сертификат
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+        <a class="btn btn-call" href="tel:+73532252575"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>Позвонить</a>
+      </div>
       <div class="hero-meta">
         <span>ул. Чкалова, 20</span>
         <span>Пн–Вс, 10:00–20:00</span>
@@ -386,8 +394,8 @@
 <section class="lead-doc">
   <div class="wrap lead-grid">
     <div>
-      <div class="eyebrow">Руководитель клиники</div>
-      <h2>Ольга Владимировна Иванова</h2>
+      <div class="eyebrow">Владелица клиники</div>
+      <h2>Ольга</h2>
       <p class="lead" style="margin-bottom:0">Директор центра «Борменталь56». Выстраивает работу центра на&nbsp;принципах научного подхода, безопасности и&nbsp;заботы о&nbsp;каждом клиенте.</p>
       <ul class="facts">
         <li><strong>16</strong><p>лет профессионального стажа</p></li>
@@ -396,7 +404,8 @@
       </ul>
     </div>
     <figure class="photo portrait">
-      <img src="images/portrait.jpg" alt="Ольга Владимировна Иванова, руководитель клиники «Борменталь»" loading="lazy">
+      <img src="images/portrait.jpg" alt="Ольга, владелица клиники «Борменталь»" loading="lazy">
+      <figcaption>Ольга, владелица клиники</figcaption>
     </figure>
   </div>
 </section>
@@ -409,6 +418,7 @@
         <div class="eyebrow">Заявка</div>
         <h2 style="font-size:clamp(28px,4.4vw,38px)">Оформить сертификат</h2>
         <form id="certForm" novalidate style="margin-top:26px">
+          <div class="hp" aria-hidden="true"><label>Не заполняйте это поле <input name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="row">
             <div class="field">
               <label for="fName">Имя</label>
@@ -458,9 +468,9 @@
     <div class="foot-top">
       <b>Клиника «Борменталь»</b>
       <span>г. Оренбург, ул. Чкалова, 20 · Пн–Вс 10:00–20:00 · <a href="tel:+73532252575">+7 (3532) 25-25-75</a></span>
+      <a class="btn btn-call" href="tel:+73532252575"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>Позвонить</a>
     </div>
     <p class="legal"><strong>Имеются противопоказания. Необходима консультация специалиста.</strong></p>
-    <p class="legal">Черновик. Цены и условия уточняются. Оплата не требуется — сначала черновик, оплата только если понравится.</p>
   </div>
 </footer>
 
@@ -510,9 +520,69 @@
     type.value = 'any'; syncType(); amt.value = v; goOrder();
   });
 
+  /* ================= ОТПРАВКА ЗАЯВОК =================
+     Чтобы включить отправку, поменяйте mode и заполните нужный блок:
+       'demo'       — заявки никуда не уходят, только экран «Спасибо» (сейчас)
+       'web3forms'  — на почту через web3forms.com: получить access key на почту клиники
+       'formsubmit' — на почту через formsubmit.co: при первой заявке придёт письмо с подтверждением
+       'telegram'   — в Telegram через бота: токен @BotFather и chat_id получателя
+                      (токен будет виден в коде страницы — лучше завести отдельного бота только для заявок)
+  */
+  const FORM_CONFIG = {
+    mode: 'demo',
+    web3forms:  { accessKey: '' },
+    formsubmit: { email: '' },
+    telegram:   { botToken: '', chatId: '' },
+    subject: 'Заявка на подарочный сертификат — Борменталь'
+  };
+
+  function buildText(d){
+    return [
+      'Новая заявка на подарочный сертификат',
+      'Имя: ' + d.name,
+      'Телефон: ' + d.phone,
+      'Сертификат: ' + d.certificate,
+      'Кому подарок: ' + (d.recipient || '—'),
+      'Страница: ' + location.href
+    ].join('\n');
+  }
+
+  async function postJSON(url, body){
+    const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(body) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || j.success === false || j.success === 'false' || j.ok === false) throw new Error(j.message || j.description || ('HTTP ' + r.status));
+    return j;
+  }
+
+  async function sendLead(d){
+    const c = FORM_CONFIG;
+    switch (c.mode) {
+      case 'web3forms':
+        if (!c.web3forms.accessKey) throw new Error('Не задан accessKey Web3Forms');
+        return postJSON('https://api.web3forms.com/submit', {
+          access_key: c.web3forms.accessKey, subject: c.subject, from_name: 'Сайт: подарочный сертификат',
+          'Имя': d.name, 'Телефон': d.phone, 'Сертификат': d.certificate, 'Кому подарок': d.recipient || '—'
+        });
+      case 'formsubmit':
+        if (!c.formsubmit.email) throw new Error('Не задан email FormSubmit');
+        return postJSON('https://formsubmit.co/ajax/' + encodeURIComponent(c.formsubmit.email), {
+          _subject: c.subject, _template: 'table', _captcha: 'false',
+          'Имя': d.name, 'Телефон': d.phone, 'Сертификат': d.certificate, 'Кому подарок': d.recipient || '—'
+        });
+      case 'telegram':
+        if (!c.telegram.botToken || !c.telegram.chatId) throw new Error('Не заданы botToken/chatId Telegram');
+        return postJSON('https://api.telegram.org/bot' + c.telegram.botToken + '/sendMessage', {
+          chat_id: c.telegram.chatId, text: buildText(d), disable_web_page_preview: true
+        });
+      default: // 'demo'
+        return { demo: true };
+    }
+  }
+
   const form = document.getElementById('certForm');
   const fErr = document.getElementById('formErr');
-  form.addEventListener('submit', e => {
+  const submitBtn = form.querySelector('[type=submit]');
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const name = form.name.value.trim();
     const phoneDigits = form.phone.value.replace(/\D/g, '');
@@ -521,10 +591,22 @@
     if (phoneDigits.length < 10) { fErr.textContent = 'Укажите телефон'; form.phone.classList.add('invalid'); form.phone.focus(); return; }
     if (type.value === 'any' && (!amt.value || +amt.value < MIN)) { fErr.textContent = 'Укажите сумму от 3 000 ₽'; amt.classList.add('invalid'); amt.focus(); return; }
     fErr.textContent = '';
+    if (form.website.value) return; // ловушка для спам-ботов
     const what = type.value === 'any'
       ? 'сертификат на ' + fmt(amt.value) + ' ₽'
       : NAMES[type.value];
-    // Черновик: заявка никуда не отправляется — подключим получателя после согласования.
+    const lead = { name, phone: form.phone.value.trim(), certificate: what, recipient: form.recipient.value.trim() };
+
+    const label = submitBtn.textContent;
+    submitBtn.disabled = true; submitBtn.textContent = 'Отправляем…';
+    try {
+      await sendLead(lead);
+    } catch (err) {
+      console.error('Не удалось отправить заявку:', err);
+      fErr.innerHTML = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните: <a href="tel:+73532252575">+7 (3532) 25-25-75</a>';
+      submitBtn.disabled = false; submitBtn.textContent = label;
+      return;
+    }
     document.getElementById('okText').textContent = name + ', заявка на ' + what + ' принята. Администратор свяжется с вами и пришлёт электронный сертификат.';
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('ok').style.display = 'block';
