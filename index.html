@@ -163,10 +163,12 @@
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
   .photo{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--surface);border:1px solid var(--line)}
   .photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 40%}
-  .portrait{max-width:420px;justify-self:end;width:100%}
-  .portrait img{aspect-ratio:4/5;object-position:center 30%}
-  .lead-doc{position:relative;background:var(--bg)}
-  .lead-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .portrait{max-width:560px;justify-self:end;width:100%;border:0;
+    box-shadow:0 0 0 1px rgba(214,170,110,.18),0 0 38px 6px rgba(214,165,100,.22),0 0 90px 24px rgba(140,52,46,.55),0 24px 60px -20px rgba(0,0,0,.5)}
+  .portrait img{aspect-ratio:4/5;object-position:center 22%}
+  .portrait figcaption{font-size:14px;padding:14px 18px}
+  .lead-doc{position:relative;background:var(--bg);overflow:hidden}
+  .lead-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
   .photo figcaption{font-size:13px;color:var(--muted);padding:12px 16px;background:var(--surface)}
   .facts{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
   .facts li{display:flex;gap:16px;align-items:flex-start}
@@ -196,11 +198,7 @@
   .foot-top .btn-call{padding:15px 26px}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .legal{font-size:12.5px;line-height:1.6;margin:0}
-  /* предупреждение ч.7 ст.24 ФЗ «О рекламе»: крупно, контрастно, рядом с услугами */
-  .warn{margin:0;background:var(--cream);color:var(--on-cream);font:700 clamp(15px,1.9vw,20px)/1.35 var(--sans);letter-spacing:.06em;text-transform:uppercase;
-    text-align:center;padding:clamp(16px,2.2vw,22px) 20px;border-radius:8px}
-  .hero .hero-warn{position:relative;z-index:3;border-radius:0;margin:0;padding:18px 20px;color:var(--on-cream);max-width:none;font-size:clamp(15px,1.9vw,20px)}
-  .warn-gap{margin-top:28px}
+  .foot-warn{margin:0;font:600 14px/1.5 var(--sans);color:#f2e8dc;letter-spacing:.02em}
   .req{display:grid;gap:6px;font-size:13px;line-height:1.55;margin:0;padding:18px 0;border-bottom:1px solid var(--line)}
   .req b{color:var(--ink);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
   .ph{display:inline-block;border:1px dashed var(--cream);border-radius:4px;padding:0 6px;color:var(--ink);background:rgba(242,232,220,.1);font-weight:700}
@@ -216,7 +214,7 @@
     section{padding:64px 0}
     .offers,.amount,.about-grid,.noms,.lead-grid{grid-template-columns:1fr}
     .lead-grid{gap:32px}
-    .portrait{justify-self:start;max-width:100%}
+    .portrait{justify-self:center;max-width:100%;box-shadow:0 0 0 1px rgba(214,170,110,.18),0 0 26px 4px rgba(214,165,100,.22),0 0 60px 16px rgba(140,52,46,.55)}
     .lead-grid .portrait{order:-1}
     .amount{gap:22px}
     .about-grid{gap:32px}
@@ -238,7 +236,6 @@
     .hero-meta{margin-top:18px;gap:8px 18px}
     .hero p{margin-bottom:24px}
     .top{padding:24px 0 8px}
-    .hero .hero-warn{padding:14px 16px;font-size:15px}
     .btn{width:100%}
   }
 </style>
@@ -275,7 +272,6 @@
       </div>
     </div>
   </div>
-  <p class="warn hero-warn" role="note">Имеются противопоказания. Необходима консультация специалиста</p>
 </section>
 
 <div class="cert-zone">
@@ -330,7 +326,6 @@
       </article>
 
     </div>
-    <div class="warn-gap"><p class="warn" role="note">Имеются противопоказания. Необходима консультация специалиста</p></div>
   </div>
 </section>
 
@@ -361,7 +356,6 @@
         <a class="btn btn-block" href="#order" data-pick="c10000">Оформить сертификат</a>
       </article>
     </div>
-    <div class="warn-gap"><p class="warn" role="note">Имеются противопоказания. Необходима консультация специалиста</p></div>
   </div>
 </section>
 
@@ -505,7 +499,7 @@
       <a href="privacy.html">Политика конфиденциальности</a>
       <a href="soglasie.html">Согласие на обработку персональных данных</a>
     </div>
-    <p class="warn" role="note">Имеются противопоказания. Необходима консультация специалиста</p>
+    <p class="foot-warn" role="note">Имеются противопоказания. Необходима консультация специалиста</p>
   </div>
 </footer>
 
