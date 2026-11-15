@@ -561,7 +561,7 @@
   async function sendLead(fields){
     if (!FORM_ENDPOINT) throw new Error('FORM_ENDPOINT не задан');
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 15000);
+    const timer = setTimeout(() => ctrl.abort(), 20000); // 20 с: Apps Script после простоя отвечает медленно. Повторной автоотправки нет — чтобы не было дублей.
     try {
       const r = await fetch(FORM_ENDPOINT, { method:'POST', body:new URLSearchParams(fields), signal:ctrl.signal });
       const j = await r.json().catch(() => null);
