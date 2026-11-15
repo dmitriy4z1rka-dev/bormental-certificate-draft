@@ -505,6 +505,10 @@
 
 
 <script>
+  /* Адрес веб-приложения Google Apps Script (…/exec), куда уходят заявки.
+     Пока пусто: форма не отправляет заявки и предлагает позвонить. Инструкция — в google-apps-script.js */
+  const FORM_ENDPOINT = '';
+
   const MIN = 3000;
   const type = document.getElementById('fType');
   const amtWrap = document.getElementById('fAmountWrap');
@@ -550,98 +554,67 @@
   });
 
   /* ================= ОТПРАВКА ЗАЯВОК =================
-     Чтобы включить отправку, поменяйте mode и заполните нужный блок:
-       'demo'       — заявки никуда не уходят, только экран «Спасибо» (сейчас)
-       'web3forms'  — на почту через web3forms.com: получить access key на почту клиники
-       'formsubmit' — на почту через formsubmit.co: при первой заявке придёт письмо с подтверждением
-       'telegram'   — в Telegram через бота: токен @BotFather и chat_id получателя
-                      (токен будет виден в коде страницы — лучше завести отдельного бота только для заявок)
-  */
-  const FORM_CONFIG = {
-    mode: 'demo',
-    web3forms:  { accessKey: '' },
-    formsubmit: { email: '' },
-    telegram:   { botToken: '', chatId: '' },
-    subject: 'Заявка на подарочный сертификат — Борменталь'
-  };
+     POST на FORM_ENDPOINT, тело — URLSearchParams:
+     name, phone, certificate, comment, website (ловушка для ботов). */
+  const CLINIC_PHONE_HTML = '<a href="tel:+73532252575">+7 (3532) 25-25-75</a>';
 
-  function buildText(d){
-    return [
-      'Новая заявка на подарочный сертификат',
-      'Имя: ' + d.name,
-      'Телефон: ' + d.phone,
-      'Сертификат: ' + d.certificate,
-      'Кому подарок: ' + (d.recipient || '—'),
-      'Согласие на обработку ПД: дано ' + d.consentAt,
-      'Страница: ' + location.href
-    ].join('\n');
-  }
-
-  async function postJSON(url, body){
-    const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(body) });
-    const j = await r.json().catch(() => ({}));
-    if (!r.ok || j.success === false || j.success === 'false' || j.ok === false) throw new Error(j.message || j.description || ('HTTP ' + r.status));
-    return j;
-  }
-
-  async function sendLead(d){
-    const c = FORM_CONFIG;
-    switch (c.mode) {
-      case 'web3forms':
-        if (!c.web3forms.accessKey) throw new Error('Не задан accessKey Web3Forms');
-        return postJSON('https://api.web3forms.com/submit', {
-          access_key: c.web3forms.accessKey, subject: c.subject, from_name: 'Сайт: подарочный сертификат',
-          'Имя': d.name, 'Телефон': d.phone, 'Сертификат': d.certificate, 'Кому подарок': d.recipient || '—', 'Согласие на обработку ПД': 'дано ' + d.consentAt
-        });
-      case 'formsubmit':
-        if (!c.formsubmit.email) throw new Error('Не задан email FormSubmit');
-        return postJSON('https://formsubmit.co/ajax/' + encodeURIComponent(c.formsubmit.email), {
-          _subject: c.subject, _template: 'table', _captcha: 'false',
-          'Имя': d.name, 'Телефон': d.phone, 'Сертификат': d.certificate, 'Кому подарок': d.recipient || '—', 'Согласие на обработку ПД': 'дано ' + d.consentAt
-        });
-      case 'telegram':
-        if (!c.telegram.botToken || !c.telegram.chatId) throw new Error('Не заданы botToken/chatId Telegram');
-        return postJSON('https://api.telegram.org/bot' + c.telegram.botToken + '/sendMessage', {
-          chat_id: c.telegram.chatId, text: buildText(d), disable_web_page_preview: true
-        });
-      default: // 'demo'
-        return { demo: true };
+  async function sendLead(fields){
+    if (!FORM_ENDPOINT) throw new Error('FORM_ENDPOINT не задан');
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 15000);
+    try {
+      const r = await fetch(FORM_ENDPOINT, { method:'POST', body:new URLSearchParams(fields), signal:ctrl.signal });
+      const j = await r.json().catch(() => null);
+      if (!r.ok || !j || j.ok !== true) throw new Error('Ответ сервера: HTTP ' + r.status);
+    } finally {
+      clearTimeout(timer);
     }
   }
 
   const form = document.getElementById('certForm');
   const fErr = document.getElementById('formErr');
   const submitBtn = form.querySelector('[type=submit]');
+  const consent = document.getElementById('fConsent');
+  const consentWrap = document.getElementById('consentWrap');
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    if (submitBtn.disabled) return;
     const name = form.name.value.trim();
     const phoneDigits = form.phone.value.replace(/\D/g, '');
     form.querySelectorAll('.input').forEach(i => i.classList.remove('invalid'));
-    if (!name) { fErr.textContent = 'Укажите имя'; form.name.classList.add('invalid'); form.name.focus(); return; }
-    if (phoneDigits.length < 10) { fErr.textContent = 'Укажите телефон'; form.phone.classList.add('invalid'); form.phone.focus(); return; }
-    if (type.value === 'any' && (!amt.value || +amt.value < MIN)) { fErr.textContent = 'Укажите сумму от 3 000 ₽'; amt.classList.add('invalid'); amt.focus(); return; }
-    const consent = document.getElementById('fConsent');
-    const consentWrap = document.getElementById('consentWrap');
     consentWrap.classList.remove('invalid');
+    if (!name) { fErr.textContent = 'Укажите имя'; form.name.classList.add('invalid'); form.name.focus(); return; }
+    if (phoneDigits.length !== 11) { fErr.textContent = 'Укажите телефон полностью — 11 цифр, например +7 900 123-45-67'; form.phone.classList.add('invalid'); form.phone.focus(); return; }
+    if (type.value === 'any' && (!amt.value || +amt.value < MIN)) { fErr.textContent = 'Укажите сумму от 3 000 ₽'; amt.classList.add('invalid'); amt.focus(); return; }
     if (!consent.checked) { fErr.textContent = 'Нужно согласие на обработку персональных данных'; consentWrap.classList.add('invalid'); consent.focus(); return; }
     fErr.textContent = '';
-    if (form.website.value) return; // ловушка для спам-ботов
-    const what = type.value === 'any'
+
+    const certificate = type.value === 'any'
       ? 'сертификат на ' + fmt(amt.value) + ' ₽'
       : NAMES[type.value];
-    const lead = { name, phone: form.phone.value.trim(), certificate: what, recipient: form.recipient.value.trim(), consentAt: new Date().toISOString() };
+    const recipient = form.recipient.value.trim();
+    const fields = {
+      name,
+      phone: form.phone.value.trim(),
+      certificate,
+      comment: recipient ? 'Кому подарок: ' + recipient : '',
+      website: form.website.value
+    };
 
     const label = submitBtn.textContent;
     submitBtn.disabled = true; submitBtn.textContent = 'Отправляем…';
     try {
-      await sendLead(lead);
+      await sendLead(fields);
     } catch (err) {
-      console.error('Не удалось отправить заявку:', err);
-      fErr.innerHTML = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните: <a href="tel:+73532252575">+7 (3532) 25-25-75</a>';
+      console.error('Заявка не отправлена:', err);
+      fErr.innerHTML = 'Не удалось отправить заявку. Позвоните нам, и администратор оформит сертификат: ' + CLINIC_PHONE_HTML;
       submitBtn.disabled = false; submitBtn.textContent = label;
       return;
     }
-    document.getElementById('okText').textContent = name + ', заявка на ' + what + ' принята. Администратор свяжется с вами и пришлёт электронный сертификат.';
+    submitBtn.disabled = false; submitBtn.textContent = label;
+    form.reset(); syncType();
+    document.getElementById('okText').textContent = 'Администратор перезвонит вам, чтобы оформить сертификат';
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('ok').style.display = 'block';
   });
