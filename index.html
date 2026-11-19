@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Подарочный сертификат — клиника «Борменталь»</title>
 <meta name="description" content="Подарочный сертификат клиники «Борменталь», Оренбург: массаж лица, абонемент на тело, косметология — к любому поводу.">
 <meta property="og:type" content="website">
@@ -251,6 +251,8 @@
   .cookie-ok{background:var(--cream);color:var(--on-cream)}
   .cookie-no{background:transparent;color:var(--ink);border-color:var(--line-strong)!important}
   .cookie-btns button:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+  /* закреплённая панель кнопок на телефоне (до 768 px) */
+  .dock{display:none}
   .foot-links{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px}
   .foot-links a{color:var(--ink)}
   .consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5;color:var(--muted);margin:4px 0 16px;cursor:pointer}
@@ -284,9 +286,24 @@
     .cookie-text b{font-size:16px;text-transform:none;letter-spacing:0;margin-bottom:2px}
     .cookie-text p{font-size:12.5px;line-height:1.38}
     .cookie-btns > button{flex:1;min-height:40px}
+    .wrap{padding-left:max(24px, env(safe-area-inset-left));padding-right:max(24px, env(safe-area-inset-right))}
+    :root{--dock-h:calc(72px + env(safe-area-inset-bottom))}
+    .dock{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:45;
+      padding:10px max(12px, env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+      background:rgba(52,18,18,.72);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);
+      border-top:1px solid var(--line-strong);box-shadow:0 -12px 30px -14px rgba(0,0,0,.55);
+      transition:transform .35s ease, opacity .35s ease, visibility 0s linear 0s}
+    .dock .btn{min-height:52px;padding:0 12px;font-size:13px;letter-spacing:.1em;border-radius:8px}
+    .dock-order{flex:0 0 60%;width:auto}
+    .dock-call{flex:1 1 0;min-width:0;width:auto;background:rgba(242,232,220,.06)}
+    .dock.off{transform:translateY(calc(100% + 12px));opacity:0;visibility:hidden;pointer-events:none;
+      transition:transform .35s ease, opacity .35s ease, visibility 0s linear .35s}
+    footer{padding-bottom:calc(var(--dock-h) + var(--cookie-space, 0px) + 36px)}
+    .cookie{bottom:calc(var(--dock-h) + 8px);transition:bottom .35s ease}
+    .dock-off .cookie{bottom:calc(8px + env(safe-area-inset-bottom))}
   }
   @media (max-width:520px){
-    .wrap{padding:0 16px}
+    .wrap{padding:0 max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left))}
     .card,.order .card{padding:26px 20px}
     .offer{padding:0}
     .offer-head{padding:26px 22px 24px}
@@ -305,7 +322,10 @@
     .hero-fade{height:110px}
   }
   @media (max-width:360px){
-    .wrap{padding:0 14px}
+    .wrap{padding:0 max(14px, env(safe-area-inset-right)) 0 max(14px, env(safe-area-inset-left))}
+    .dock{gap:8px}
+    .dock .btn{font-size:12px;letter-spacing:.04em;padding:0 8px;gap:6px}
+    .dock-order{flex-basis:56%}
     .hero h1{font-size:32px;margin-bottom:16px}
     .hero p{font-size:15px;line-height:1.5;margin-bottom:18px}
     .hero-body{padding:28px 0 30px}
@@ -327,6 +347,7 @@
     .hero-actions{gap:10px}
     .hero-actions .btn{padding-top:15px;padding-bottom:15px;min-height:50px}
   }
+  @media (prefers-reduced-motion:reduce){ .dock,.dock.off,.cookie{transition:none!important} }
 </style>
 </head>
 <body>
@@ -637,6 +658,12 @@
   </div>
 </footer>
 
+<!-- Закреплённая панель кнопок: видна только на экранах до 768 px, прячется, когда на экране форма заявки -->
+<nav class="dock" id="dock" aria-label="Быстрые действия">
+  <a class="btn dock-order" href="#order" id="dockOrder">Оставить заявку</a>
+  <a class="btn btn-call dock-call" href="tel:+73532252575"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>Позвонить</a>
+</nav>
+
 <!-- Баннер согласия на cookie: показывается, только если задан YM_ID -->
 <div class="cookie" id="cookieBar" role="region" aria-label="Согласие на cookie" hidden>
   <div class="cookie-text">
@@ -771,6 +798,34 @@
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('ok').style.display = 'block';
   });
+
+  /* ================= ПАНЕЛЬ КНОПОК НА ТЕЛЕФОНЕ =================
+     «Оставить заявку» ведёт к форме так же, как кнопки «Оформить сертификат».
+     Пока форма на экране или в ней идёт ввод, панель плавно уходит вниз. */
+  (function(){
+    const dock = document.getElementById('dock');
+    const formCard = document.querySelector('#order .card');
+    const root = document.documentElement;
+    document.getElementById('dockOrder').addEventListener('click', e => { e.preventDefault(); goOrder(); });
+    let formOnScreen = false, typing = false;
+    function sync(){
+      const off = formOnScreen || typing;
+      dock.classList.toggle('off', off);
+      root.classList.toggle('dock-off', off);
+      if (off) dock.setAttribute('inert', ''); else dock.removeAttribute('inert');
+    }
+    // форма «на экране», когда заходит в среднюю часть экрана (20–80 % высоты), а не только краешком
+    function check(){
+      const r = formCard.getBoundingClientRect(), h = window.innerHeight;
+      const now = r.top < h * 0.8 && r.bottom > h * 0.2;
+      if (now !== formOnScreen) { formOnScreen = now; sync(); }
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    check();
+    formCard.addEventListener('focusin', () => { typing = true; sync(); });
+    formCard.addEventListener('focusout', () => { setTimeout(() => { typing = formCard.contains(document.activeElement); sync(); }, 0); });
+  })();
 
   /* ================= COOKIE И ЯНДЕКС МЕТРИКА =================
      Код Метрики загружается только после «Принять». До выбора и после «Отклонить» —
