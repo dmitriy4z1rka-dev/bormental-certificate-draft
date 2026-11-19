@@ -67,6 +67,11 @@
     background:
       radial-gradient(120% 80% at 15% 100%, rgba(52,16,16,.84) 0%, rgba(62,20,20,.52) 55%, rgba(74,28,28,.26) 100%),
       linear-gradient(180deg, rgba(58,20,20,.5) 0%, rgba(58,20,20,.12) 40%, rgba(58,20,20,.72) 100%)}
+  /* мягкий переход обложки в следующий блок: градиент + лёгкое размытие */
+  .hero-fade{position:absolute;left:0;right:0;bottom:0;height:150px;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(74,28,28,0) 0%,rgba(74,28,28,.55) 55%,#4a1c1c 100%);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 70%);mask-image:linear-gradient(180deg,transparent 0%,#000 70%)}
   .hero-frame{position:absolute;inset:18px;z-index:2;border:1px solid var(--line);pointer-events:none}
   .top{position:relative;z-index:3;padding:34px 0 22px}
   .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -93,7 +98,7 @@
       linear-gradient(180deg,#4a1c1c 0%,#501f1f 50%,#4a1c1c 100%)}
   .cert-zone::before{content:"";position:absolute;left:-5%;right:-5%;top:120px;height:260px;z-index:-1;pointer-events:none;
     background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 260' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23f2e8dc' stroke-width='1'%3E%3Cpath stroke-opacity='.14' d='M0 150C240 60 420 230 720 140S1200 40 1440 120'/%3E%3Cpath stroke-opacity='.09' d='M0 180C260 90 440 250 740 165S1210 70 1440 150'/%3E%3Cpath stroke-opacity='.05' d='M0 210C280 120 460 270 760 190S1220 100 1440 180'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat}
-  .cert-zone::after{content:"";position:absolute;right:-160px;bottom:-160px;width:460px;height:460px;border-radius:50%;z-index:-1;pointer-events:none;
+  .cert-zone::after{content:"";position:absolute;right:-160px;bottom:60px;width:460px;height:460px;border-radius:50%;z-index:-1;pointer-events:none;
     border:1px solid rgba(242,232,220,.1);box-shadow:0 0 0 60px rgba(242,232,220,.02),0 0 0 61px rgba(242,232,220,.07)}
 
   .offers{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
@@ -171,11 +176,11 @@
   input[type=number]{-moz-appearance:textfield}
 
   /* ---------- 4. о клинике ---------- */
-  .about{position:relative;overflow:hidden;isolation:isolate;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  .about{position:relative;overflow:hidden;isolation:isolate;
     background:
-      radial-gradient(50% 60% at 100% 50%, rgba(122,48,46,.5) 0%, rgba(122,48,46,0) 70%),
-      linear-gradient(160deg,#5a2424 0%,#522121 60%,#4a1c1c 100%)}
-  .about::before{content:"";position:absolute;left:-180px;top:-140px;width:520px;height:520px;z-index:-1;pointer-events:none;
+      radial-gradient(50% 45% at 100% 50%, rgba(122,48,46,.45) 0%, rgba(122,48,46,0) 70%),
+      linear-gradient(180deg,#4a1c1c 0%,#552222 16%,#582323 50%,#522121 84%,#4a1c1c 100%)}
+  .about::before{content:"";position:absolute;left:-180px;top:40px;width:520px;height:520px;z-index:-1;pointer-events:none;
     border-radius:46% 54% 60% 40% / 52% 44% 56% 48%;background:radial-gradient(circle at 60% 60%,rgba(242,232,220,.06),rgba(242,232,220,0) 70%)}
   .about::after{content:"";position:absolute;right:4%;top:48px;width:180px;height:180px;z-index:-1;pointer-events:none;border-radius:50%;
     border:1px solid rgba(242,232,220,.14);box-shadow:0 0 0 22px rgba(0,0,0,0),0 0 0 23px rgba(242,232,220,.07)}
@@ -193,6 +198,13 @@
   .facts li{display:flex;gap:16px;align-items:flex-start}
   .facts strong{flex:none;min-width:64px;font:600 36px/1 var(--serif);color:var(--ink)}
   .facts p{margin:2px 0 0;color:var(--muted)}
+  .stats{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .stats li{padding:16px 16px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(242,232,220,.07) 0%,rgba(242,232,220,.02) 100%)}
+  .stats strong{display:block;font:600 34px/1 var(--serif);font-variant-numeric:lining-nums;color:var(--ink);margin-bottom:6px}
+  .stats li.wide{grid-column:1/-1}
+  .stats strong.word{font-size:22px;line-height:1.15;text-transform:uppercase;letter-spacing:.04em}
+  .stats span{display:block;font-size:14px;line-height:1.45;color:var(--muted)}
+  .about-text{color:var(--muted);margin:16px 0 0;max-width:560px}
   .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
   .tags span{border:1px solid var(--line-strong);border-radius:4px;padding:7px 14px;font-size:14px;color:var(--ink)}
 
@@ -209,11 +221,11 @@
   .hidden{display:none}
 
   /* ---------- 6. футер ---------- */
-  footer{background:var(--bg-deep);color:var(--faint);padding:44px 0 90px;font-size:14px;border-top:1px solid var(--line)}
+  footer{background:linear-gradient(180deg,#431919 0%,var(--bg-deep) 140px);color:var(--faint);padding:44px 0 max(90px, calc(var(--cookie-space, 0px) + 28px));font-size:14px}
   footer .wrap{display:grid;gap:18px}
   .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-bottom:22px;border-bottom:1px solid var(--line)}
   .foot-top b{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--ink);text-transform:uppercase;letter-spacing:.06em}
-  .foot-top a{text-decoration:none}
+  .foot-top a{text-decoration:none;white-space:nowrap}
   .foot-top .btn-call{padding:15px 26px}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .legal{font-size:12.5px;line-height:1.6;margin:0}
@@ -221,6 +233,24 @@
   .req{display:grid;gap:6px;font-size:13px;line-height:1.55;margin:0;padding:18px 0;border-bottom:1px solid var(--line)}
   .req b{color:var(--ink);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
   .ph{display:inline-block;border:1px dashed var(--cream);border-radius:4px;padding:0 6px;color:var(--ink);background:rgba(242,232,220,.1);font-weight:700}
+  .copy{margin:4px 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:12px;letter-spacing:.03em;color:rgba(242,232,220,.5)}
+  .linklike{background:none;border:0;padding:0;font:inherit;color:var(--ink);text-decoration:underline;cursor:pointer}
+  /* баннер cookie */
+  .cookie{position:fixed;right:16px;bottom:16px;z-index:50;width:360px;max-width:calc(100% - 32px);
+    display:flex;flex-direction:column;gap:12px;padding:16px 16px 14px 18px;border-radius:16px;
+    background:rgba(52,18,18,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border:1px solid var(--line-strong);box-shadow:0 18px 40px -16px rgba(0,0,0,.6);color:var(--ink)}
+  .cookie[hidden]{display:none}
+  .cookie-text{flex:1;min-width:0}
+  .cookie-text b{display:block;font:600 16px/1.2 var(--serif);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+  .cookie-text p{margin:0;font-size:13px;line-height:1.45;color:var(--muted)}
+  .cookie-text a{color:var(--ink)}
+  .cookie-btns{display:flex;gap:8px;flex:none}
+  .cookie-btns > button{flex:1}
+  .cookie-btns button{min-height:44px;padding:0 18px;border-radius:8px;font:700 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:1px solid var(--cream)}
+  .cookie-ok{background:var(--cream);color:var(--on-cream)}
+  .cookie-no{background:transparent;color:var(--ink);border-color:var(--line-strong)!important}
+  .cookie-btns button:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
   .foot-links{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px}
   .foot-links a{color:var(--ink)}
   .consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5;color:var(--muted);margin:4px 0 16px;cursor:pointer}
@@ -229,6 +259,10 @@
   .consent.invalid{color:var(--error)}
   .legal strong{color:var(--ink);font-weight:600}
 
+  @media (max-width:960px){
+    .hero{min-height:0}
+    .hero-body{margin-top:0;padding:56px 0 48px}
+  }
   @media (max-width:860px){
     section{padding:64px 0}
     .offers,.amount,.about-grid,.noms,.lead-grid,.terms-card{grid-template-columns:1fr}
@@ -240,6 +274,16 @@
     .about-grid{gap:32px}
     .about::after{display:none}
     .cosmo{padding-top:0}
+  }
+  @media (max-width:768px){
+    .hero-actions{flex-direction:column;align-items:stretch}
+    .btn{width:100%;min-height:52px}
+    .foot-top{flex-direction:column;align-items:stretch}
+    .foot-top .btn-call{padding:15px 20px}
+    .cookie{left:8px;right:8px;bottom:8px;width:auto;max-width:none;gap:8px;padding:10px 12px;border-radius:14px}
+    .cookie-text b{font-size:16px;text-transform:none;letter-spacing:0;margin-bottom:2px}
+    .cookie-text p{font-size:12.5px;line-height:1.38}
+    .cookie-btns > button{flex:1;min-height:40px}
   }
   @media (max-width:520px){
     .wrap{padding:0 16px}
@@ -258,7 +302,30 @@
     .hero-meta{margin-top:18px;gap:8px 18px}
     .hero p{margin-bottom:24px}
     .top{padding:24px 0 8px}
-    .btn{width:100%}
+    .hero-fade{height:110px}
+  }
+  @media (max-width:360px){
+    .wrap{padding:0 14px}
+    .hero h1{font-size:32px;margin-bottom:16px}
+    .hero p{font-size:15px;line-height:1.5;margin-bottom:18px}
+    .hero-body{padding:28px 0 30px}
+    .top{padding:20px 0 4px}
+    .eyebrow{margin-bottom:12px}
+    .brand b{font-size:19px}
+    .brand small{letter-spacing:.14em}
+    .card,.order .card{padding:22px 16px}
+    .offer-head{padding:24px 18px 22px}
+    .offer-body{padding:22px 16px 24px}
+    .offer-top span{letter-spacing:.14em}
+    .spa{padding:16px 14px 14px}
+    .price{font-size:42px}
+    .stats{grid-template-columns:1fr}
+    .stats strong.word{font-size:19px;letter-spacing:.02em}
+    .btn{letter-spacing:.07em;padding-left:14px;padding-right:14px;font-size:13px}
+    .cookie-btns button{padding:0 12px}
+    .cookie-text p{font-size:12px;line-height:1.36}
+    .hero-actions{gap:10px}
+    .hero-actions .btn{padding-top:15px;padding-bottom:15px;min-height:50px}
   }
 </style>
 </head>
@@ -267,6 +334,7 @@
 <!-- 1. Обложка -->
 <section class="hero">
   <img class="hero-bg" src="images/hero.jpg" alt="" aria-hidden="true">
+  <div class="hero-fade" aria-hidden="true"></div>
   <div class="hero-frame"></div>
   <header class="top">
     <div class="wrap">
@@ -455,6 +523,13 @@
       <div class="eyebrow">О клинике</div>
       <h2>Под чуткой заботой</h2>
       <p class="lead" style="margin-bottom:0">Эстетическая косметология, массаж, нутрициология и психология в одном месте.</p>
+      <p class="about-text">Всё необходимое собрано под одной крышей — не нужно ездить по разным специалистам. Процедуры проходят мягко и&nbsp;подходят даже для чувствительной кожи.</p>
+      <ul class="stats">
+        <li><strong>4</strong><span>направления: косметология, массаж, нутрициология, психология</span></li>
+        <li><strong>41</strong><span>услуга в&nbsp;каталоге клиники — от&nbsp;массажа до&nbsp;инъекционной косметологии</span></li>
+        <li><strong>2&nbsp;мес.</strong><span>онлайн-поддержки после комплексной программы снижения веса</span></li>
+        <li class="wide"><strong class="word">Сертифицированные материалы</strong><span>и только проверенные технологии</span></li>
+      </ul>
       <div class="tags">
         <span>Массаж лица</span><span>Массаж тела</span><span>СПА комплекс</span><span>Обертывание</span><span>Сферомассаж</span><span>Прессотерапия</span>
       </div>
@@ -548,20 +623,41 @@
     </div>
     <div class="req">
       <b>Сведения о медицинской организации</b>
-      <span>ИП Иванова Ольга Владимировна</span>
+      <span data-legal-name>ИП Иванова Ольга Владимировна</span>
       <span>ИНН 561017448027 · ОГРНИП 324565800059291</span>
       <span>Адрес: г.&nbsp;Оренбург, ул.&nbsp;Чкалова, 20</span>
     </div>
     <div class="foot-links">
       <a href="privacy.html">Политика конфиденциальности</a>
       <a href="soglasie.html">Согласие на обработку персональных данных</a>
+      <button class="linklike" type="button" id="cookieSettings" hidden>Настройки cookie</button>
     </div>
     <p class="foot-warn" role="note">Имеются противопоказания. Необходима консультация специалиста</p>
+    <p class="copy">© 2026 Клиника «Борменталь». <span data-legal-name>ИП Иванова Ольга Владимировна</span></p>
   </div>
 </footer>
 
+<!-- Баннер согласия на cookie: показывается, только если задан YM_ID -->
+<div class="cookie" id="cookieBar" role="region" aria-label="Согласие на cookie" hidden>
+  <div class="cookie-text">
+    <b>Мы используем файлы cookie и Яндекс Метрику</b>
+    <p>Это помогает анализировать посещаемость и улучшать сайт, данные обезличены. Подробнее — в&nbsp;<a href="privacy.html">политике конфиденциальности</a>.</p>
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-ok" type="button" id="cookieAccept">Принять</button>
+    <button class="cookie-no" type="button" id="cookieDecline">Отклонить</button>
+  </div>
+</div>
+
 
 <script>
+  /* Номер счётчика Яндекс Метрики, например '12345678'. Пока пусто — Метрика не подключается и баннер cookie не показывается. */
+  const YM_ID = '';
+
+  /* Название юрлица — подставляется в реквизиты и строку копирайта в подвале. */
+  const LEGAL_NAME = 'ИП Иванова Ольга Владимировна';
+  document.querySelectorAll('[data-legal-name]').forEach(el => { el.textContent = LEGAL_NAME; });
+
   /* Адрес веб-приложения Google Apps Script (…/exec), куда уходят заявки.
      Если адрес пустой, форма не отправляет заявки и предлагает позвонить. Инструкция — в google-apps-script.js */
   const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwc0gRjgyLjF7moqX2wVXZivwo0Cb3N-vMCK1pT0KJmhww4WWzuxFnHTQ0NNblOkmR-/exec';
@@ -675,6 +771,57 @@
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('ok').style.display = 'block';
   });
+
+  /* ================= COOKIE И ЯНДЕКС МЕТРИКА =================
+     Код Метрики загружается только после «Принять». До выбора и после «Отклонить» —
+     ни скрипта Метрики, ни её cookie. Выбор хранится в localStorage этого браузера. */
+  (function(){
+    if (!YM_ID) return;
+    const KEY = 'bm_cookie_choice';
+    const bar = document.getElementById('cookieBar');
+    const settings = document.getElementById('cookieSettings');
+    const store = {
+      get(){ try { return localStorage.getItem(KEY); } catch(e) { return null; } },
+      set(v){ try { localStorage.setItem(KEY, v); } catch(e) {} }
+    };
+    let loaded = false;
+    function loadMetrika(){
+      if (loaded) return; loaded = true;
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=' + encodeURIComponent(YM_ID), 'ym');
+      ym(Number(YM_ID), 'init', { clickmap:true, trackLinks:true, accurateTrackBounce:true });
+    }
+    function clearYmCookies(){
+      document.cookie.split(';').forEach(c => {
+        const n = c.split('=')[0].trim();
+        if (/^_ym/.test(n)) {
+          const exp = '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+          document.cookie = n + exp;
+          document.cookie = n + exp + '; domain=' + location.hostname;
+          document.cookie = n + exp + '; domain=.' + location.hostname.replace(/^www\./, '');
+        }
+      });
+    }
+    // Пока баннер виден, внизу страницы остаётся место под него — он не закрывает кнопки подвала.
+    const root = document.documentElement;
+    function show(){ bar.hidden = false; root.style.setProperty('--cookie-space', bar.offsetHeight + 'px'); }
+    function hide(){ bar.hidden = true; root.style.removeProperty('--cookie-space'); }
+
+    document.getElementById('cookieAccept').addEventListener('click', () => { store.set('accepted'); hide(); loadMetrika(); });
+    document.getElementById('cookieDecline').addEventListener('click', () => {
+      const wasLoaded = loaded;
+      store.set('declined'); hide(); clearYmCookies();
+      if (wasLoaded) location.reload(); // выгрузить уже запущенную Метрику
+    });
+    settings.hidden = false;
+    settings.addEventListener('click', show);
+    window.addEventListener('resize', () => { if (!bar.hidden) show(); });
+
+    const choice = store.get();
+    if (choice === 'accepted') loadMetrika();
+    else if (choice !== 'declined') show();
+  })();
 </script>
 </body>
 </html>
