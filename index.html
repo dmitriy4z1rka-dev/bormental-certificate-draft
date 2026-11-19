@@ -114,8 +114,26 @@
   .incl b{display:block;font-weight:700}
   .incl small{display:block;color:var(--muted);font-size:14px}
   .incl .gift-i{background:var(--cream);border-color:var(--cream);color:var(--on-cream)}
-  .incl-note{display:flex;align-items:center;gap:8px;margin:0 0 24px;padding:8px 12px;border-radius:8px;background:rgba(242,232,220,.07);border:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.4;width:fit-content}
-  .incl-note svg{flex:none;color:var(--ink)}
+  .spa{margin:0 0 24px;padding:18px 18px 16px;border-radius:12px;border:1px solid var(--line-strong);
+    background:linear-gradient(160deg,rgba(242,232,220,.08) 0%,rgba(242,232,220,.03) 100%)}
+  .spa-title{margin:0 0 14px;font:600 20px/1.15 var(--serif);text-transform:uppercase;letter-spacing:.05em;color:var(--ink)}
+  .spa-grid{display:grid;gap:14px}
+  .spa-g + .spa-g{padding-top:14px;border-top:1px solid var(--line)}
+  .spa-h{display:flex;align-items:center;gap:8px;margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .spa-h svg{flex:none;color:var(--ink)}
+  .spa ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+  .spa li{position:relative;padding-left:16px;font-size:15px;line-height:1.45;color:var(--ink)}
+  .spa li::before{content:"";position:absolute;left:2px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--cream);opacity:.75}
+  /* условия сертификата */
+  .terms{padding-top:0}
+  .terms-card{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
+  .terms-card h2{font-size:clamp(24px,3vw,30px);margin:0}
+  .terms-list{list-style:none;margin:0;padding:0;display:grid;gap:0}
+  .terms-list li{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:15px;line-height:1.5}
+  .terms-list li:first-child{padding-top:0}
+  .terms-list li:last-child{border-bottom:0;padding-bottom:0}
+  .terms-list i{flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--ink);margin-top:-2px}
+  .terms-list b{color:var(--ink);font-weight:700}
   .price-label{font-size:12px;color:var(--faint);letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-top:auto}
   .price{font-family:var(--serif);font-size:clamp(46px,5.6vw,60px);font-weight:600;line-height:1;margin:6px 0 10px;color:var(--ink)}
   .note{color:var(--muted);font-size:14px;margin:0 0 22px}
@@ -212,7 +230,8 @@
 
   @media (max-width:860px){
     section{padding:64px 0}
-    .offers,.amount,.about-grid,.noms,.lead-grid{grid-template-columns:1fr}
+    .offers,.amount,.about-grid,.noms,.lead-grid,.terms-card{grid-template-columns:1fr}
+    .terms-card{gap:20px}
     .lead-grid{gap:32px}
     .portrait{justify-self:center;max-width:100%;box-shadow:0 0 0 1px rgba(214,170,110,.18),0 0 26px 4px rgba(214,165,100,.22),0 0 60px 16px rgba(140,52,46,.55)}
     .lead-grid .portrait{order:-1}
@@ -296,7 +315,17 @@
             <li><i class="gift-i"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8Zm0 0s1.5-5 4-4.5S17 8 12 8Z"/></svg></i>
               <span><b>Подарок</b><small>СПА-программа</small></span></li>
           </ul>
-          <p class="incl-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Состав СПА-программы уточняется</p>
+          <div class="spa">
+            <p class="spa-title">Что входит в СПА-программу</p>
+            <div class="spa-grid">
+              <div class="spa-g"><p class="spa-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M9 15c1.7 1.3 4.3 1.3 6 0"/></svg>Лицо</p>
+                <ul><li>Массаж лица и воротниковой зоны</li><li>Нефритовая маска для глаз</li><li>Питательная маска для лица</li></ul></div>
+              <div class="spa-g"><p class="spa-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20c0-9 3-15 7-15s7 6 7 15"/><path d="M9 20c0-6 1.3-10 3-10s3 4 3 10"/></svg>Волосы</p>
+                <ul><li>Мытьё и массаж головы</li><li>Маска для волос и сушка</li></ul></div>
+              <div class="spa-g"><p class="spa-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 5 4.5 5 8.5A5 5 0 0 1 7 11.5C7 7.5 10 6 12 3Z"/><path d="M12 21v-4"/></svg>Атмосфера</p>
+                <ul><li>Ароматерапия и звукотерапия</li><li>Чай и угощение от команды Борменталь56</li></ul></div>
+            </div>
+          </div>
           <div class="price-label">Стоимость сертификата</div>
           <div class="price">18 000 ₽</div>
           <p class="note">Электронный сертификат</p>
@@ -317,7 +346,17 @@
             <li><i class="gift-i"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M12 8S10.5 3 8 3.5 7 8 12 8Zm0 0s1.5-5 4-4.5S17 8 12 8Z"/></svg></i>
               <span><b>Подарок</b><small>СПА-программа</small></span></li>
           </ul>
-          <p class="incl-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Состав СПА-программы уточняется</p>
+          <div class="spa">
+            <p class="spa-title">Что входит в СПА-программу</p>
+            <div class="spa-grid">
+              <div class="spa-g"><p class="spa-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M9 15c1.7 1.3 4.3 1.3 6 0"/></svg>Лицо</p>
+                <ul><li>Массаж лица и воротниковой зоны</li><li>Нефритовая маска для глаз</li><li>Питательная маска для лица</li></ul></div>
+              <div class="spa-g"><p class="spa-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20c0-9 3-15 7-15s7 6 7 15"/><path d="M9 20c0-6 1.3-10 3-10s3 4 3 10"/></svg>Волосы</p>
+                <ul><li>Мытьё и массаж головы</li><li>Маска для волос и сушка</li></ul></div>
+              <div class="spa-g"><p class="spa-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 5 4.5 5 8.5A5 5 0 0 1 7 11.5C7 7.5 10 6 12 3Z"/><path d="M12 21v-4"/></svg>Атмосфера</p>
+                <ul><li>Ароматерапия и звукотерапия</li><li>Чай и угощение от команды Борменталь56</li></ul></div>
+            </div>
+          </div>
           <div class="price-label">Стоимость сертификата</div>
           <div class="price">18 000 ₽</div>
           <p class="note">Электронный сертификат</p>
@@ -381,6 +420,22 @@
         <div class="err" id="amountErr" aria-live="polite"></div>
         <button class="btn btn-block" type="button" id="amountBtn">Оформить сертификат</button>
       </div>
+    </div>
+  </div>
+</section>
+<!-- 3б. Условия сертификата -->
+<section class="terms" id="terms">
+  <div class="wrap">
+    <div class="card terms-card">
+      <div>
+        <div class="eyebrow">Условия</div>
+        <h2>Условия сертификата</h2>
+      </div>
+      <ul class="terms-list">
+        <li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><span>Сертификат действует <b>6&nbsp;месяцев</b> с&nbsp;даты покупки.</span></li>
+        <li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></i><span>Деньги за сертификат возвращаются <b>только покупателю</b>.</span></li>
+        <li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10Z"/></svg></i><span>Процедура проводится <b>после консультации специалиста</b>. При противопоказаниях сертификат можно обменять на&nbsp;другую услугу.</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -490,10 +545,9 @@
     </div>
     <div class="req">
       <b>Сведения о медицинской организации</b>
-      <span><span class="ph">[ЮРЛИЦО]</span></span>
-      <span>ИНН <span class="ph">[ИНН]</span> · ОГРН <span class="ph">[ОГРН]</span></span>
-      <span>Юридический адрес: <span class="ph">[ЮРИДИЧЕСКИЙ АДРЕС]</span>. Адрес оказания услуг: г.&nbsp;Оренбург, ул.&nbsp;Чкалова, 20</span>
-      <span>Лицензия на осуществление медицинской деятельности <span class="ph">[ЛИЦЕНЗИЯ]</span></span>
+      <span>ИП Иванова Ольга Владимировна</span>
+      <span>ИНН 561017448027 · ОГРНИП 324565800059291</span>
+      <span>Адрес: г.&nbsp;Оренбург, ул.&nbsp;Чкалова, 20</span>
     </div>
     <div class="foot-links">
       <a href="privacy.html">Политика конфиденциальности</a>
